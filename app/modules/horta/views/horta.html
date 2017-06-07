@@ -1,0 +1,114 @@
+<div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">
+                Minha horta <small class="pull-right">Qual tipo de horta quero utilizar no meu jardim?</small>
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Tipos de horta</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-md-12" ng-class="{ 'form-group': true, 'col-sm-4': true, 'has-error':form.length.$invalid && !form.length.$pristine || !garden.length }" >
+                            <b>Área disponível:</b> 2m x 3m x 5m
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label class="control-label" for="type">Tipo de horta</label>
+                            <select name="type" id="type" class="form-control" ng-model="type">
+                                <option ng-repeat="item in types" value="{{item.id}}">{{ item.description }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="item in types" ng-show="item.id == type">
+                        <div class="col-lg-4" >
+                            <img src="{{item.url}}">
+                        </div>
+                        <div class="col-lg-8">
+                            <h2 style="margin-top:0px;">{{item.description}}</h2>
+                            <b>Tamanho ideal</b><br>
+                            <p>{{item.mesure}}</p>
+                            <b>Descrição</b><br>
+                            <p>{{item.comments}}</p>
+                            <button ng-click="select(item.id)" class="btn btn-success"><i class="fa fa-check-circle"></i> Selecionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="typeSelected">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Seleção de hortaliças</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-lg-12">
+                            <label class="control-label" for="type">Hortaliças</label>
+                            <select name="type" id="plant" class="form-control" ng-model="plant">
+                                <option ng-repeat="item in plants" value="{{item.id}}">{{ item.description }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" ng-repeat="item in plants" ng-show="item.id == plant">
+                        <div class="col-lg-4" >
+                            <img src="{{item.url}}">
+                        </div>
+                        <div class="col-lg-8">
+                            <h2 style="margin-top:0px;">{{item.description}}</h2>
+                            <b>Como plantar?</b><br>
+                            <p>{{item.howToPlant}}</p>
+                            <b>Como cuidar?</b><br>
+                            <p>{{item.careDescription}}</p>
+                            <b>Frequência de cuidados</b><br>
+                            <p>{{item.carePeriod}}</p>
+                            <button ng-click="addPlant(item)" class="btn btn-success"><i class="fa fa-plus-circle"></i> Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="listPlants.length > 0">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><b>Lista de plantas da minha horta</b></div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <table style="width: 100%" class="table table-hover table-striped" >
+                                <tr>
+                                    <th>Hortaliça</th>
+                                    <th>Período de cuidado</th>
+                                    <th width="10%" style="text-align:center">Ações</th>
+                                </tr>
+                                <tr ng-repeat="item in listPlants">
+                                    <td>{{item.description}}</td>
+                                    <td>{{item.carePeriod}}</td>
+                                    <td align="center">
+                                        <button type="button" class="btn btn-bm btn-default" ng-click="removePlant(item.id)" aria-label="Left Align">
+                                            <span class="glyphicon glyphicon-trash"></span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12" align="right">
+            <button ng-click="save()" class="btn btn-primary" ><i class="fa fa-save"></i> Salvar</button>
+        </div>
+    </div>
+</div>
