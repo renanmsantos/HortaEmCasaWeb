@@ -6,9 +6,9 @@ angular.module('hortaApp')
             if( $scope.form.$valid ){
                 AuthenticationService.Login($scope.login, function (result) {
                     if (result === true) {
-                        $location.path( "/home" );
+                        $location.path( "/main/painel" );
                     } else {
-                        $scope.mensagem = "(*) Login e/ou senha inválidos."
+                        $scope.mensagem = "Login e/ou senha inválidos."
                     }
                 });
             }

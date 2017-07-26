@@ -30,7 +30,7 @@
                             <div class="form-group has-error" ng-if="mensagem">
                                 <div class="text-danger">{{ mensagem }}</div>
                             </div>
-                            <a ui-sref="main.painel" ng-disabled="form.$invalid" class="btn btn-lg btn-success btn-block">Login</a>
+                            <a ng-click="logar()" ng-disabled="form.$invalid" class="btn btn-lg btn-success btn-block">Login</a>
                         </fieldset>
                     </form>
                 </div>

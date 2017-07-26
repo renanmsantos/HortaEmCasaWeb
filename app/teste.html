@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script>
+
+        function salvar(){
+
+            var yourObject = {
+                "gardenWidth" : $("#length").val(),
+                "gardenHeight" : $("#width").val(),
+                "gardenLength" : $("#height").val(),
+                "types" : []
+            };
+            var myString = JSON.stringify(yourObject);
+
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:8082/api/garden/teste",
+                data: myString,
+                headers: {
+                    'content-type' : "application/json"
+                }
+            });
+            alert('sucess');
+        }
+
+
+    </script>
+</head>
+<body>
+<form id="form" name="form" action="" method="">
+    <input type="text" name="length" id="length"  maxlength="5"  placeholder="Comprimento de área disponível" />
+    <input type="text" name="width" id="width"  maxlength="5"  placeholder="Largura de área disponível" />
+    <input type="text" name="height" id="height"  maxlength="5"  placeholder="Altura de área disponível" />
+    <button  type="click" onclick="salvar()" >Submit</button>
+</form>
+</body>
+</html>

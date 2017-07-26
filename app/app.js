@@ -140,6 +140,7 @@ angular
                 }
             })
 
+
     }])
     .run(['$rootScope', '$http', '$location', '$localStorage', function($rootScope, $http, $location, $localStorage){
 
@@ -154,6 +155,7 @@ angular
                 $location.path('/login');
             }
         });
+
     }]);
 
     
