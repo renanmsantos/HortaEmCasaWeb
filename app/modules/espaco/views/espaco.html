@@ -1,0 +1,72 @@
+<div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">
+                Meu espaço <small class="pull-right">Quanto espaço tenho disponível para fazer minha horta?</small>
+            </h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <form name="form" role="form" novalidate>
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><b>Área disponível</b></div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="form-group col-md-4" ng-class="{ 'form-group': true, 'col-sm-4': true, 'has-error':form.length.$invalid && !form.length.$pristine || !garden.length }" >
+                                <label class="control-label" for="length">Comprimento</label>
+                                <div class="form-group input-group">
+                                    <input type="text" name="length" id="length" ng-model="garden.gardenLength" class="form-control" maxlength="5"  placeholder="Comprimento de área disponível" required/>
+                                    <span class="input-group-addon">metros</span>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-4" ng-class="{ 'form-group': true, 'col-sm-4': true, 'has-error':form.width.$invalid && !form.width.$pristine || !garden.width }" >
+                                <label class="control-label" for="width">Largura</label>
+                                <div class="form-group input-group">
+                                    <input type="text" name="width" id="width" ng-model="garden.gardenWidth" class="form-control" maxlength="5"  placeholder="Largura de área disponível" required/>
+                                    <span class="input-group-addon">metros</span>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-4" ng-class="{ 'form-group': true, 'col-sm-4': true, 'has-error':form.height.$invalid && !form.height.$pristine || !garden.height }" >
+                                <label class="control-label" for="height">Altura</label>
+                                <div class="form-group input-group">
+                                    <input type="text" name="height" id="height" ng-model="garden.gardenHeight" class="form-control" maxlength="5"  placeholder="Altura de área disponível" required/>
+                                    <span class="input-group-addon">metros</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12" align="center">
+                                <img src="../../../img/tamanho.jpg">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+        <table style="width: 100%" class="table table-hover table-striped" >
+            <tr>
+                <th>Comprimento</th>
+                <th>Largura</th>
+                <th>Altura</th>
+            </tr>
+            <tr ng-repeat="garden in gardens"  style="cursor: pointer;">
+                <td>{{garden.gardenLength}}</td>
+                <td>{{garden.gardenWidth}}</td>
+                <td>{{garden.gardenHeight}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12" align="right">
+            <button ng-click="save()" class="btn btn-primary" ><i class="fa fa-save"></i> Salvar</button>
+        </div>
+    </div>
+
+</div>
+
